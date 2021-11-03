@@ -1,0 +1,6 @@
+Dockerfile
+.gitignore
+readme.md
+.idea
+*.pyc
+staticfiles
