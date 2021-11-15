@@ -29,7 +29,10 @@
         </li>
         {% else %}
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Add url</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'links:create_link' %}">Add link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="{% url 'links:link_list' %}">Your links</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
