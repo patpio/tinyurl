@@ -1,3 +1,5 @@
+from uuid import uuid4
+
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, DeleteView, ListView
 
@@ -8,6 +10,13 @@ class CreateLink(CreateView):
     model = Link
     fields = ['url']
     template_name = 'links/create_link.html'
+
+    def form_valid(self, form):
+        host_url = self.request.build_absolute_uri('/')
+        token = str(uuid4()).split('-')[0]
+        url = f'{host_url}{token}'
+        form.instance.tiny_url = url
+        return super().form_valid(form)
 
     def get_success_url(self):
         return reverse_lazy('links:link_detail', kwargs={'pk': self.object.pk})
