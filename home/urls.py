@@ -6,4 +6,5 @@ app_name = 'home'
 
 urlpatterns = [
     path('', views.HomeView.as_view(), name='home'),
+    path('<str:token>/', views.RedirectUrlView.as_view(), name='redirect_url'),
 ]

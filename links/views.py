@@ -16,6 +16,7 @@ class CreateLink(CreateView):
         token = str(uuid4()).split('-')[0]
         url = f'{host_url}{token}'
         form.instance.tiny_url = url
+        form.instance.token = token
         return super().form_valid(form)
 
     def get_success_url(self):
